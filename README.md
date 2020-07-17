@@ -6,8 +6,8 @@
 # 二.项目进度  
 ## 第一阶段：从接口下调取数据  
 # 三.项目成员  
-@prefect-of-gryffindor(https://github.com/prefect-of-gryffindor)  
-@HJH97214(https://github.com/HJH97214)  
-@tiemolou(https://github.com/tiemolou)  
+<@prefect-of-gryffindor>(https://github.com/prefect-of-gryffindor)  
+<@HJH97214>(https://github.com/HJH97214)  
+<@tiemolou>(https://github.com/tiemolou)  
 # 四.使用许可  
-@MIT License(https://github.com/prefect-of-gryffindor/Visualization-of-agricultural-data/blob/master/LICENSE)
+<@MIT License>(https://github.com/prefect-of-gryffindor/Visualization-of-agricultural-data/blob/master/LICENSE)
