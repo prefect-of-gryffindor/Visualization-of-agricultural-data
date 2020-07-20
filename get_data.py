@@ -1,5 +1,7 @@
 import requests
-url = "http://openapi.uml-tech.com/farm/getHistoryCanInfo"
+import datetime
+url_1 = "http://openapi.uml-tech.com/farm/getHistoryCanInfo"
+url_2 = "http://openapi.uml-tech.com/farm/getHistoryGpsInfo"
 header = {'Content-Type': 'application/json'}
 dict = [
     "860675040778035",
@@ -55,26 +57,47 @@ dict = [
 ]
 list = []
 count = 0
+begin = datetime.date(2019,7,1)
+end  = datetime.date(2019,8,31)
+delta = (end-begin).days+1
 for i in dict:
-    body = "{    \"did\": \""+i+"\"," \
-              "    \"gpsEndTime\": 20190701235959," \
-              "    \"filterIfMissing\": true," \
-              "    \"pageSize\": 10," \
-              "    \"pageType\": 0," \
-              "    \"requestColumns\": \"3013,2601,3014,2603,3015,3019,2602,2204,3016,4040,did,4014\"," \
-              "    \"reversed\": false," \
-              "    \"showColumns\": \"3013,2601,3014,2603,3015,3019,2602,2204,3016,4040,did,4014\"," \
-              "    \"startRowkey\": \"a\"," \
-              "    \"gpsStartTime\": 20190701000000," \
-              "    \"token\": \"92d4e3fef54e432a01127200365d039f\"," \
-              "    \"vin\": \"\"\r\n}"
-    response = requests.post(url=url , headers=header , data=body)
-    count +=1
-    print("这时第：{0}次发送".format(count))
-    if(response.status_code==200):
-        list.append(count)
-        print ("请求成功")
-    else:
-        print ("请求失败")
-    print(response.text.encode('utf8'))
+    for j in range(delta):
+        day = begin + datetime.timedelta(days=j)
+        day=str(day).replace("-","")
+        body_1 = "{    \"did\": \""+i+"\"," \
+                  "    \"gpsEndTime\": \""+day+"235959\"," \
+                  "    \"filterIfMissing\": true," \
+                  "    \"pageSize\": 10," \
+                  "    \"pageType\": 0," \
+                  "    \"reversed\": false," \
+                  "    \"startRowkey\": \"a\"," \
+                  "    \"gpsStartTime\": \""+day+"000000\"," \
+                  "    \"token\": \"92d4e3fef54e432a01127200365d039f\"," \
+                  "    \"vin\": \"\"\r\n}"
+        body_2 = "{    \"did\": \""+i+"\"," \
+                  "    \"gpsEndTime\": \""+day+"235959\"," \
+                  "    \"pageSize\": 10," \
+                  "    \"pageType\": 1," \
+                  "    \"reversed\": true," \
+                  "   \"startRowkey\": \"a\"," \
+                  "    \"gpsStartTime\": \""+day+"000000\"," \
+                  "    \"token\": \"92d4e3fef54e432a01127200365d039f\"," \
+                  "    \"vin\": \"\"}"
+        response_1 = requests.post(url=url_1 , headers=header , data=body_1)
+        response_2 = requests.post(url=url_2 , headers=header , data=body_2)
+        count +=1
+        print("这是向农机can数据接口的第：{0}次发送".format(count))
+        if(response_1.status_code==200):
+            list.append(count)
+            print ("请求成功")
+        else:
+            print ("请求失败")
+        print(response_1.text.encode('utf8'))
+        print("这是向农机历史轨迹查询接口的第：{0}次发送".format(count))
+        if(response_2.status_code==200):
+            list.append(count)
+            print ("请求成功")
+        else:
+            print ("请求失败")
+        print(response_2.text.encode('utf8'))
 
