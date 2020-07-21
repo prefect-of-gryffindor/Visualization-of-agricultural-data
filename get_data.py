@@ -1,5 +1,8 @@
 import requests
 import datetime
+import xlwt
+import json
+
 url_1 = "http://openapi.uml-tech.com/farm/getHistoryCanInfo"
 url_2 = "http://openapi.uml-tech.com/farm/getHistoryGpsInfo"
 header = {'Content-Type': 'application/json'}
@@ -57,6 +60,9 @@ dict = [
 ]
 list = []
 count = 0
+workbook = xlwt.Workbook(encoding='utf-8',style_compression=0)
+sheet_1 = workbook.add_sheet('data',cell_overwrite_ok=True)
+sheet_2 = workbook.add_sheet('data',cell_overwrite_ok=True)
 begin = datetime.date(2019,7,1)
 end  = datetime.date(2019,8,31)
 delta = (end-begin).days+1
