@@ -1,5 +1,5 @@
-from openpyxl import load_workbook
-excel = load_workbook('50_did.xlsx')
-table = excel.get_sheet_by_name('sheet1')
-for cell in table['c']:
-    print(cell)
+data =((1,2,3),(2,3,4))
+print(data[0])
+print(data[1])
+print(data[1][2])
+print(type(data))

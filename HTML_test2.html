@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test2</title>
+</head>
+<body>
+<input type="button" value="getdata" onclick="getData()" readonly="value">
+</body>
+</html>
+<script  type="text/javascript" >
+function getData() {
+  var settings = {
+  "url": "http://openapi.uml-tech.com/farm/getHistoryCanInfo",
+  "method": "POST",
+  "timeout": 0,
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "data": JSON.stringify({"did":"NJHYTFQAT0000029","gpsEndTime":"20170602120646","filterIfMissing":true,"pageSize":10,"pageType":0,"reversed":false,"startRowKey":"a","gpsStartTime":"20170602120649","token":"92d4e3fef54e432a01127200365d039f","vin":""}),
+};
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+}
+
+</script>

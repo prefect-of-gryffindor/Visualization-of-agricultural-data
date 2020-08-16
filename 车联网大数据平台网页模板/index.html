@@ -98,7 +98,7 @@
 <div class="data_content">
     <div class="data_time">
         <img src="img/data_time.png" alt="" class="fl">
-        <input type="text"  value="" id="demo-1" style="background: #04425f;width: 80px;" placeholder="选择日期">
+        <input type="text" value="" id="demo-1" style="background: #04425f;width: 80px;" placeholder="选择日期" >
     </div>
     <div class="data_info">
         <div class="info_1 fl">
@@ -451,29 +451,37 @@
 <script src="js/foundation-datepicker.js"></script>
 <script src="js/foundation-datepicker.zh-CN.js"></script>
 <script>
-    $('#demo-1').fdatepicker();
+    $('#demo-1').fdatepicker().on('changeDate',function(){
+        year = $('#demo-1').val().substring(6,10)
+        month = $('#demo-1').val().substring(0,2)
+        day = $('#demo-1').val().substring(3,5)
+        alert(year+month+day)
+    })
 
-    var nowTemp = new Date();
-    var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
-    var checkin = $('#dpd1').fdatepicker({
-        onRender: function (date) {
-            return date.valueOf() < now.valueOf() ? 'disabled' : '';
-        }
-    }).on('changeDate', function (ev) {
-        if (ev.date.valueOf() > checkout.date.valueOf()) {
-            var newDate = new Date(ev.date)
-            newDate.setDate(newDate.getDate() + 1);
-            checkout.update(newDate);
-        }
-        checkin.hide();
-        $('#dpd2')[0].focus();
-    }).data('datepicker');
-    var checkout = $('#dpd2').fdatepicker({
-        onRender: function (date) {
-            return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
-        }
-    }).on('changeDate', function (ev) {
-        checkout.hide();
-    }).data('datepicker');
+    // function getData(){
+    //     alert($('#demo-1').val())
+    // }
+// <!--    var nowTemp = new Date();-->
+// <!--    var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);-->
+// <!--    var checkin = $('#dpd1').fdatepicker({-->
+// <!--        onRender: function (date) {-->
+// <!--            return date.valueOf() < now.valueOf() ? 'disabled' : '';-->
+// <!--        }-->
+// <!--    }).on('changeDate', function (ev) {-->
+// <!--        if (ev.date.valueOf() > checkout.date.valueOf()) {-->
+// <!--            var newDate = new Date(ev.date)-->
+// <!--            newDate.setDate(newDate.getDate() + 1);-->
+// <!--            checkout.update(newDate);-->
+// <!--        }-->
+// <!--        checkin.hide();-->
+// <!--        $('#dpd2')[0].focus();-->
+// <!--    }).data('datepicker');-->
+// <!--    var checkout = $('#dpd2').fdatepicker({-->
+// <!--        onRender: function (date) {-->
+// <!--            return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';-->
+// <!--        }-->
+// <!--    }).on('changeDate', function (ev) {-->
+// <!--        checkout.hide();-->
+// <!--    }).data('datepicker');-->
 </script>
 </html>
