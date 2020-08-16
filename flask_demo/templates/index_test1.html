@@ -3,8 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script>
+    var did = [];
+    cum_did = {{ did|tojson }};
+
+    var GPSDateTime = [];
+    cum_GPSDateTime = {{ GPSDateTime|tojson }};
+
+    var numOfUsedSatellites = [];
+    cum_numOfUsedSatellites = {{ numOfUsedSatellites|tojson }};
+
+    for (i in cum_did)
+    {
+        did.push(cum_did[i]);
+        GPSDateTime.push(cum_GPSDateTime[i]);
+        numOfUsedSatellites.push(cum_numOfUsedSatellites[i]);
+    }
+
+    var num1 = {{ num1|tojson }};
+    var num2 = {{ num2|tojson }};
+
+    var province = {{ province|tojson }};
+    var pro_total = {{ pro_total|tojson }};
+    var pro_1 = {{ pro_1|tojson }};
+    var pro_2 = {{ pro_2|tojson }};
+    var pro_3 = {{ pro_3|tojson }};
+    var pro_4 = {{ pro_4|tojson }};
+    var pro_5 = {{ pro_5|tojson }};
+    var pro_6 = {{ pro_6|tojson }};
+    var pro_7 = {{ pro_7|tojson }};
+    var pro_8 = {{ pro_8|tojson }};
+    var pro_9 = {{ pro_9|tojson }};
+    var pro_10 = {{ pro_10|tojson }};
+    </script>
+    <script src="static/js/jquery-2.2.1.min.js"></script>
+    <script src="static/js/dl_test.js"></script>
+
 </head>
 <body>
-<p>{{ context }}</p>
+<div><p id="p1">1</p></div>
+<div><p id="p2">2</p></div>
+<div><p id="p3">3</p></div>
+<div><p id="p4">4</p></div>
+<div><p id="p5">5</p></div>
+<div><p id="p6">6</p></div>
+<div><p id="p7">7</p></div>
+<div><p id="p8">8</p></div>
+
+<div><p id="p9">1</p></div>
+<div><p id="p10">2</p></div>
+<div><p id="p11">3</p></div>
+<div><p id="p12">4</p></div>
+<div><p id="p13">5</p></div>
+<div><p id="p14">6</p></div>
+<div><p id="p15">7</p></div>
+<div><p id="p16">8</p></div>
+<div><p id="p17">5</p></div>
+<div><p id="p18">6</p></div>
+<div><p id="p19">7</p></div>
+<div><p id="p20">8</p></div>
+<select name="" id="sel">
+    <option>did</option>
+    <option>did</option>
+    <option>did</option>
+    <option>did</option>
+
+</select>
+<script>
+    {#for (i in did)#}
+    {#{#}
+    {#    var newoption = $("<option value=''>"+did[i]+"</<option>")#}
+    {#    $('#sel').append(newoption)}#}
+
+    {#url = "http://127.0.0.1:5000/test"#}
+    {#$.get(url,function(GPSDateTime){#}
+    {#    $('#p1').text(GPSDateTime)})#}
+    $('#p1').text(num1);
+    $('#p2').text(num2);
+
+
+    $('#p9').text(province);
+    $('#p10').text(pro_total);
+    $('#p11').text(pro_1);
+    $('#p12').text(pro_2);
+    $('#p13').text(pro_3);
+    $('#p14').text(pro_4);
+    $('#p15').text(pro_5);
+    $('#p16').text(pro_6)
+    $('#p17').text(pro_7);
+    $('#p18').text(pro_8);
+    $('#p19').text(pro_9);
+    $('#p20').text(pro_10)
+
+
+</script>
 </body>
+
 </html>
