@@ -4,7 +4,7 @@ from openpyxl import Workbook
 import json
 import gc
 
-gc.collect()
+
 url = "http://openapi.uml-tech.com/farm/getHistoryCanInfo"
 header = {'Content-Type': 'application/json'}
 #------------获取50辆农机的did号----------------
@@ -22,17 +22,17 @@ title = []
 for i in range(len(filed_range)):
     title.append(filed_range[i][2].value)
 ws.append(title)
-wb.save('data(0-10).xlsx')
+wb.save('data(12).xlsx')
 #--------------------从接口获取数据---------------------------
 count = 0
-for cell in did_range[0:10]:            #按车辆循环获取
+for cell in did_range: #按车辆循环获取
     body = "{    \"did\": \""+str(cell[0].value)+"\"," \
               "    \"gpsEndTime\": \"20191231235959\"," \
               "    \"filterIfMissing\": true," \
               "    \"pageSize\": 10000," \
               "    \"pageType\": 0," \
               "    \"reversed\": false," \
-              "    \"gpsStartTime\": \"20190101000000\"," \
+              "    \"gpsStartTime\": \"20191201000000\"," \
               "    \"token\": \"92d4e3fef54e432a01127200365d039f\"," \
               "    \"vin\": \"\"\r\n}"
     response = requests.post(url=url , headers=header , data=body)
@@ -57,7 +57,7 @@ for cell in did_range[0:10]:            #按车辆循环获取
     else:
         print("请求失败")
     print(response.text.encode('utf8'))
-wb.save('data(0-10).xlsx')
+wb.save('data(12).xlsx')
 del excel_filed,excel_did,wb,ws
 gc.collect()
 

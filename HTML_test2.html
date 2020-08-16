@@ -8,29 +8,21 @@
 <input type="button" value="getdata" onclick="getData()" readonly="value">
 </body>
 </html>
-<script  type="text/javascript" src="${pageContext.request.contextPath}/pub/scripts/jquery.1.8.2.min.js">
+<script  type="text/javascript" >
 function getData() {
-    var settings = {
+  var settings = {
+  "url": "http://openapi.uml-tech.com/farm/getHistoryCanInfo",
+  "method": "POST",
+  "timeout": 0,
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "data": JSON.stringify({"did":"NJHYTFQAT0000029","gpsEndTime":"20170602120646","filterIfMissing":true,"pageSize":10,"pageType":0,"reversed":false,"startRowKey":"a","gpsStartTime":"20170602120649","token":"92d4e3fef54e432a01127200365d039f","vin":""}),
+};
 
-        "url": "http://openapi.uml-tech.com/farm/getOnline",
-        "method": "POST",
-        "timeout": 0,
-        "headers": {
-                    "Content-Type": "application/json"
-                    },
-        "data": JSON.stringify({
-            "dids":"NJHYNBSAT0000312,NJHYNBSAT0000279,862237044025356,LOV2262501201980,NJHYKVOAT0000400,YMJ4121905100142,862237044116825,NJHYOPWAS0000213,BDT1101912100010,NJHYNBSAT0000444,NJHYOPWAT0000294,NJHYNBSAT0000207,NJHYOPWAT0000295,NJHYNBSAT0000324,NJHYOPWAT0000304,NJHYOPWAT0000363,NJHYNBSAT0000253,NJHYOPWAT0000314,NJHYTFQAT0000153,WUZH201901C00001,NJHYOPWAS0000055,NJHYKVOAT0000395,YMJ4121905100062,NJHYNBSAT0000209,NJHYKVOAT0000340,WCHT201805C00008,NJHYOPWAT0000178,NJHYOPWAT0000323,TEST201709150008,WCHT201805C00010,WUZH201901C00008,WUZH201901C00007,WUZH201901C00004,BDT1101912100056,NJHYOPWAT0000292,WUZH201901C00006,NJHYTFQAT0000051,NJHYOPWAT0000322,NJHYNBSAT0000203,NJHYOPWAT0000110,NJHYOPWAT0000317,NJHYOPWAT0000301,862237044130453,NJHYOPWAT0000340,NJHYOPWAT0000338,NJHYKVOAT0000352,NJHYKVOAT0000372,LOV2262631101824,NJHYNBSAT0000165,LOV2263292102508",
-            "onLineOffSet":"-3000" , //近1小时内算在线
-            "today":"",
-            "token":"92d4e3fef54e432a01127200365d039f",
-            "vins":""
-            }),
-    };
-
-    $.ajax(settings).done(function (response) {
-        console.log(response);
-        //alert(response)
-        });
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
 }
 
 </script>
