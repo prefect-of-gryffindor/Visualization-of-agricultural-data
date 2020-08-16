@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>数据概览</title>
+    <link href="static/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/common.css">
+    <link rel="stylesheet" href="static/css/data_text.css">
+    <link rel="stylesheet" href="static/css/foundation-datepicker.css">
+
+    <!--[if lt IE 9]>
+    <script src="static/js/html5shiv.min.js"></script>
+    <script src="static/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<!--header开始-->
+<div class="header">
+    <div class="header_logo fl">
+        <a href="#"><img src="static/img/header_logo.png" alt=""></a>
+    </div>
+    <div class="header_nav fl">
+        <ul>
+            <li>
+                <img src="static/img/nav_1.png" alt="">
+                <a href="/" class="nav_current">数据概览</a>
+            </li>
+{#            <li>#}
+{#                <img src="static/img/nav_2.png" alt="">#}
+{#                <a href="#">车辆监控</a>#}
+{#            </li>#}
+{#            <li>#}
+{#                <img src="static/img/nav_3.png" alt="">#}
+{#                <a href="#">政府监管</a>#}
+{#            </li>#}
+{#            <li>#}
+{#                <img src="static/img/nav_4.png" alt="">#}
+{#                <a href="#">参数设置</a>#}
+{#            </li>#}
+{#            <li>#}
+{#                <img src="static/img/nav_5.png" alt="">#}
+{#                <a href="#">车载视频</a>#}
+{#            </li>#}
+            <li>
+                <img src="static/img/nav_6.png" alt="">
+                <a href="t4">历史轨迹</a>
+            </li>
+            <li>
+                <img src="static/img/nav_7.png" alt="">
+                <a href="t1">查询统计</a>
+            </li>
+            <!--<li>-->
+                <!--<img src="static/img/nav_8.png" alt="">-->
+                <!--<a href="#">行业应用</a>-->
+            <!--</li>-->
+{#            <li>#}
+{#                <img src="static/img/nav_9.png" alt="">#}
+{#                <a href="#">系统设置</a>#}
+{#                <ul>#}
+{#                    <li>#}
+{#                        <a href="#">平台管理</a>#}
+{#                        <ul>#}
+{#                            <li><a href="#">平台管理1</a></li>#}
+{#                            <li><a href="#">平台管理2</a></li>#}
+{#                            <li><a href="#">平台管理3</a></li>#}
+{#                            <li><a href="#">平台管理3</a></li>#}
+{#                            <li><a href="#">平台管理3</a></li>#}
+{#                            <li><a href="#">平台管理3</a></li>#}
+{#                        </ul>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="#">设备管理</a>#}
+{#                        <ul>#}
+{#                            <li><a href="#">设备管理1</a></li>#}
+{#                            <li><a href="#">设备管理2</a></li>#}
+{#                            <li><a href="#">设备管理3</a></li>#}
+{#                            <li><a href="#">设备管理4</a></li>#}
+{#                            <li><a href="#">设备管理5</a></li>#}
+{#                            <li><a href="#">设备管理6</a></li>#}
+{#                        </ul>#}
+{#                    </li>#}
+{#                    <li><a href="#">系统设置</a></li>#}
+{#                </ul>#}
+{#            </li>#}
+        </ul>
+    </div>
+{#    <div class="header_myself fr">#}
+{#        <p>用户：管理员</p>#}
+{#        <a href="#" data-toggle="modal" data-target=".bs-example-modal-sm">注销 &nbsp;<span class="caret"></span></a>#}
+{#    </div>#}
+</div>
+<!--header结束-->
+
+<!--content开始-->
+<div class="data_content">
+{#    <div class="data_time">#}
+{#        <img src="static/img/data_time.png" alt="" class="fl">#}
+{#        <input type="text"  value="" id="demo-1" style="background: #04425f;width: 80px;" placeholder="选择日期">#}
+{#    </div>#}
+    <div class="data_info">
+        <div class="info_1 fl">
+            <div class="text_1">
+                <div class="fl">
+                    <img src="static/img/info_1.png" alt="" class="fl">
+                    <div class="fl">
+                        <p>车辆总数(辆)</p>
+                        <p>50</p>
+                    </div>
+                </div>
+                <div class="fl">
+                    <img src="static/img/info_2.png" alt="" class="fl">
+                    <div class="fl">
+                        <p>在线车辆数（辆）</p>
+                        <p>{{ car_online }}</p>
+                    </div>
+                </div>
+                <div class="fl">
+                    <img src="static/img/info_3.png" alt="" class="fl">
+                    <div class="fl">
+                        <p>作业车辆数(辆)</p>
+                        <p>{{ car_work }}</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="info_2 fl">
+            <div class="text_2">
+                <div class="fl">
+                    <img src="static/img/info_4.png" alt="" class="fl">
+                    <div class="fl">
+                        <p>行驶里程总数(km)</p>
+                        <p>15802</p>
+                    </div>
+                </div>
+                <div class="fl">
+                    <img src="static/img/info_5.png" alt="" class="fl">
+                    <div class="fl">
+                        <p>作业总亩数(亩)</p>
+                        <p id="area">area</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="info_3 fr">
+            <div class="text_3">
+                <div class="fl">
+                    <img src="static/img/info_6.png" alt="" class="fl">
+                    <div class="fl">
+                        <p>作业总里程(km)</p>
+                        <p id="mileage">mileage</p>
+                    </div>
+                </div>
+                <div class="fl">
+                    <img src="static/img/info_7.png" alt="" class="fl">
+                    <div class="fl">
+                        <p>作业总时长(m)</p>
+                        <p id="time">time</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="data_main">
+        <div class="main_left fl">
+            <div class="left_1">
+                <div class="main_title">
+                    <img src="static/img/title_1.png" alt="">
+                    车辆类型统计
+                </div>
+                <div id="chart_1" class="chart" style="width:100%;height: 280px;"></div>
+            </div>
+            <div class="left_2">
+                <div class="main_title">
+                    <img src="static/img/title_2.png" alt="">
+                    农机状态统计
+                </div>
+                <div id="chart_2" class="chart" style="width:100%;height: 280px;"></div>
+            </div>
+        </div>
+        <div class="main_center fl">
+            <div class="center_text">
+                <div class="main_title">
+                    <img src="static/img/title_3.png" alt="">
+                    作业农机分布图
+                </div>
+                <div id="chart_map" style="width:100%;height:610px;"></div>
+            </div>
+        </div>
+        <div class="main_right fr">  {# 右上侧图表 #}
+            <div class="right_1">
+                <div class="main_title">
+                    <img src="static/img/title_4.png" alt="">
+                    可用卫星数量
+                </div>
+                <div class="choice">
+                    <label for="">设备号：</label>
+                    <select name="" id="didselect" onchange="func()">
+                        <option value="">YMJ4121905100142</option>
+                        <option value="">862237044116825</option>
+                        <option value="">BDT1101912100010</option>
+                        <option value="">NJHYNBSAT0000444</option>
+                        <option value="">NJHYOPWAT0000294</option>
+                        <option value="">NJHYNBSAT0000207</option>
+                        <option value="">NJHYOPWAT0000295</option>
+                        <option value="">NJHYNBSAT0000324</option>
+                        <option value="">NJHYOPWAT0000304</option>
+                        <option value="">NJHYOPWAT0000363</option>
+                        <option value="">NJHYNBSAT0000253</option>
+                        <option value="">NJHYOPWAT0000314</option>
+                    </select>
+                </div>
+                <div id="chart_3" class="echart" style="width:100%;height: 280px;"></div>
+            </div>
+            <div class="right_2">
+                <div class="main_title">
+                    <img src="static/img/title_5.png" alt="">
+                    作业参数统计
+                </div>
+                <div id="chart_4" class="echart fl" style="width:80%;height: 230px;"></div>
+{#                <div class="fr chart_text">#}
+{#                    <p>同比</p>#}
+{#                    <p><img src="static/img/down.png" alt="">2%</p>#}
+{#                    <p><img src="static/img/up.png" alt="">4%</p>#}
+{#                    <p><img src="static/img/down.png" alt="">5%</p>#}
+{#                    <p><img src="static/img/down.png" alt="">3%</p>#}
+{#                </div>#}
+                <div style="width: 80%;" class="text_sum">
+{#                    <div class="fl" style="width:30%">332</div>#}
+{#                    <div class="fl" style="width:40%">统计</div>#}
+{#                    <div class="fr" style="width:30%">505</div>#}
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="data_bottom">
+        <div class="bottom_1 fl">
+            <div class="main_title">
+                <img src="static/img/title_6.png" alt="">
+                作业行驶里程前5位
+            </div>
+            <div class="main_table">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>排名</th>
+                        <th>设备号</th>
+                        <th>里程数(km)</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in range(len(totalmiles)) %}
+                    <tr>
+                        <td>{{ i }}</td>
+                        <td>{{ item[i]['did'] }}</td>
+                        <td>{{ item[i]['mileage'] }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="bottom_center fl">
+            <div class="bottom_2 fl">
+                <div class="main_title">
+                    <img src="static/img/title_6.png" alt="">
+                    作业时长排名前5位
+                </div>
+                <div class="main_table">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>排名</th>
+                            <th>设备号</th>
+                            <th>时长(m)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in range(len(totaltime)) %}
+                        <tr>
+                            <td>{{ i }}</td>
+                            <td>{{ item[i]['did'] }}</td>
+                            <td>{{ item[i]['jobTime'] }}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="bottom_3 fl">
+                <div class="main_title">
+                    <img src="static/img/title_6.png" alt="">
+                    GPS速度前5位
+                </div>
+                <div class="main_table">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>排名</th>
+                            <th>设备号</th>
+                            <th>GPS速度(km/h)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in range(1,6) %}
+                        <tr>
+                            <td>{{ i }}</td>
+                            <td>{{ dids01[i-1] }}</td>
+                            <td>{{ gpsSpeed[i-1] }}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="bottom_4 fr">
+            <div class="main_title">
+                <img src="static/img/title_5.png" alt="">
+                车辆累计油耗前5位
+            </div>
+            <div class="main_table">
+                <table>
+                   <thead>
+                    <tr>
+                        <th>排名</th>
+                        <th>设备号</th>
+                        <th>累计油耗(L)</th>
+                    </tr>
+                    </thead>
+                    <thead>
+                    {% for i in range(1,6) %}
+                    <tr>
+                        <td>{{ i }}</td>
+                        <td>{{ dids[i-1] }}</td>
+                        <td>{{ totalFuelConsumption[i-1] }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+<!--content结束-->
+
+
+<!--注销模态框  开始-->
+<div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">注销</h4>
+            </div>
+            <div class="modal-body">
+                <p>确认退出该系统吗？</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--注销模态框  结束-->
+
+
+
+
+</body>
+<script src="static/js/jquery-2.2.1.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="static/js/common.js"></script>
+<script src="static/js/echarts.min.js"></script>
+<script src="static/js/echart.js"></script>
+<script src="static/js/china.js"></script>
+<script src="static/js/foundation-datepicker.js"></script>
+<script src="static/js/foundation-datepicker.zh-CN.js"></script>
+<script>
+    //将后端传到html的数据（这里是数组）设为全局变量
+    var did = [];
+    cum_did = {{ did|tojson }};
+
+    var GPSDateTime = [];
+    cum_GPSDateTime = {{ GPSDateTime|tojson }};
+
+    var numOfUsedSatellites = [];
+    cum_numOfUsedSatellites = {{ numOfUsedSatellites|tojson }};
+
+    for (i in cum_did)
+    {
+        did.push(cum_did[i]);
+        GPSDateTime.push(cum_GPSDateTime[i]);
+        numOfUsedSatellites.push(cum_numOfUsedSatellites[i]);
+    }
+
+    var num1 = {{ num1|tojson }};
+    var num2 = {{ num2|tojson }};
+    var province = {{ province|tojson }};
+    var pro_total = {{ pro_total|tojson }};
+    var pro_1 = {{ pro_1|tojson }};
+    var pro_2 = {{ pro_2|tojson }};
+    var pro_3 = {{ pro_3|tojson }};
+    var pro_4 = {{ pro_4|tojson }};
+    var pro_5 = {{ pro_5|tojson }};
+    var pro_6 = {{ pro_6|tojson }};
+    var pro_7 = {{ pro_7|tojson }};
+    var pro_8 = {{ pro_8|tojson }};
+    var pro_9 = {{ pro_9|tojson }};
+    var pro_10 = {{ pro_10|tojson }};
+
+    //循环生成右上角图表的下拉框选择内容
+    {#for (i in cum_did)#}
+    {#{#}
+    {#    var newoption = document.createElement("option");#}
+    {#    newoption.text = cum_did[i];#}
+    {#    newoption.value = i;#}
+    {#    $('#didselect').add(newoption);}#}
+
+
+
+
+{#    $('#demo-1').fdatepicker();#}
+{##}
+{#    var nowTemp = new Date();#}
+{#    var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);#}
+{#    var checkin = $('#dpd1').fdatepicker({#}
+{#        onRender: function (date) {#}
+{#            return date.valueOf() < now.valueOf() ? 'disabled' : '';#}
+{#        }#}
+{#    }).on('changeDate', function (ev) {#}
+{#        if (ev.date.valueOf() > checkout.date.valueOf()) {#}
+{#            var newDate = new Date(ev.date)#}
+{#            newDate.setDate(newDate.getDate() + 1);#}
+{#            checkout.update(newDate);#}
+{#        }#}
+{#        checkin.hide();#}
+{#        $('#dpd2')[0].focus();#}
+{#    }).data('datepicker');#}
+{#    var checkout = $('#dpd2').fdatepicker({#}
+{#        onRender: function (date) {#}
+{#            return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';#}
+{#        }#}
+{#    }).on('changeDate', function (ev) {#}
+{#        checkout.hide();#}
+{#    }).data('datepicker');#}
+{##}
+</script>
+
+<!-- 车辆类型chart_1 -->
+<script type="text/javascript">
+var myChart = echarts.init(document.getElementById('chart_1'));
+var app = {};
+option = null;
+var data = [
+    {value: {{carnum[0]}},name: '{{cartype[0]}}'},
+    {value: {{carnum[1]}},name: '{{cartype[1]}}'},
+    {value: {{carnum[2]}},name: '{{cartype[2]}}'},
+    {value: {{carnum[3]}},name: '{{cartype[3]}}'},
+    {value: {{carnum[4]}},name: '{{cartype[4]}}'},
+    {value: {{carnum[5]}},name: '{{cartype[5]}}'},
+    {value: {{carnum[6]}},name: '{{cartype[6]}}'},
+    {value: {{carnum[7]}},name: '{{cartype[7]}}'},
+    {value: {{carnum[8]}},name: '{{cartype[8]}}'},
+    {value: {{carnum[9]}},name: '{{cartype[9]}}'}
+];
+
+option = {
+    backgroundColor: 'transparent',
+    tooltip: {
+        trigger: 'item',
+        formatter: "{a} <br/>{b}: {c} ({d}%)"
+    },
+    color: ['#0035f9', '#f36f8a', '#ffff43', '#25f3e6','#0035f9', '#f36f8a', '#ffff43', '#25f3e6','#0035f9', '#f36f8a'],
+    legend: { //图例组件，颜色和名字
+        left: '70%',
+        top: '30',
+        orient: 'vertical',
+        itemGap: 12, //图例每项之间的间隔
+        itemWidth: 16,
+        itemHeight: 12,
+
+        icon: 'rect',
+        data: ['4HZJ-2500', '5AQ1', 'GF80(4LZ-8F2)', 'TS804A', '勇猛玉米机车型', '抛秧机', '拖拉机', '潍柴动力测试', '玉米机', '甘蔗机'],
+        textStyle: {
+            color: [],
+            fontStyle: 'normal',
+            fontFamily: '微软雅黑',
+            fontSize: 12,
+        }
+    },
+    series: [{
+        name: '车辆类型',
+        type: 'pie',
+        clockwise: false, //饼图的扇区是否是顺时针排布
+        minAngle: 20, //最小的扇区角度（0 ~ 360）
+        center: ['35%', '50%'], //饼图的中心（圆心）坐标
+        radius: [50, 80], //饼图的半径
+        avoidLabelOverlap: true, ////是否启用防止标签重叠
+        itemStyle: { //图形样式
+            normal: {
+                borderColor: '#1e2239',
+                borderWidth: 1.5,
+            },
+        },
+
+        label: { //标签的位置
+            normal: {
+                show: false,
+                position: 'inside', //标签的位置
+                formatter: "{d}%",
+                textStyle: {
+                    color: '#fff',
+                }
+            },
+            emphasis: {
+                show: true,
+                textStyle: {
+                    fontWeight: 'bold'
+                }
+            }
+        },
+
+        data: data
+    },
+        {
+        name: '',
+        type: 'pie',
+        clockwise: false,
+        silent: true,
+        minAngle: 20, //最小的扇区角度（0 ~ 360）
+        center: ['35%', '50%'], //饼图的中心（圆心）坐标
+        radius: [0, 45], //饼图的半径
+        itemStyle: { //图形样式
+            normal: {
+                borderColor: '#1e2239',
+                borderWidth: 1.5,
+                opacity: 0.21,
+            }
+        },
+        label: { //标签的位置
+            normal: {
+                show: false,
+            }
+        },
+        data: data
+    }]
+};
+
+// 使用刚指定的配置项和数据显示图表。
+myChart.setOption(option);
+window.addEventListener("resize",function(){
+    myChart.resize();
+});;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+</script>
+
+<script>
+    var area=document.getElementById('area');
+    area.innerText={{ total_area}};
+    var time=document.getElementById('time');
+    time.innerText={{ total_time }};
+    var mileage=document.getElementById('mileage');
+    mileage.innerText={{ total_mileage }};
+</script>
+
+<script>
+    var myChart = echarts.init(document.getElementById('chart_4'));
+
+    option = {
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+            }
+        },
+
+        legend: {
+            // align: 'center',
+            // left: '65%',
+            top: '28',
+            data: ['总亩数', '总时长', '总里程'],
+            itemWidth:16,
+            itemHeight:12,
+            // borderRadius: 0, // 统一设置四个角的圆角大小
+            icon: 'rect',
+            textStyle: {
+                itemGap: 12, //图例每项之间的间隔
+                color: [],
+                fontStyle: 'normal',
+                fontFamily: '微软雅黑',
+                fontSize: 14,
+            }
+        },
+        grid: {
+            left: '5%',
+            right: '5%',
+            bottom: '5%',
+            containLabel: true
+        },
+
+        xAxis: {
+            axisLabel: { //调整x轴的lable
+                textStyle: {
+                    color: '#fff',
+                    fontSize: 13,
+                }
+            },
+            splitLine: {
+                show: false
+            }
+        },
+        yAxis: {
+            type: 'category',
+            data: ['拖拉机', 'TS804A', '抛秧机', 'GF80(4LZ-8F2)', '甘蔗机', '玉米机', '勇猛玉米机车型', '5AQ1'],
+            axisTick : {show: true},
+            axisLabel: { //调整x轴的lable
+                textStyle: {
+                    color: '#fff',
+                    fontSize: 13,
+                }
+            },
+            splitLine: {
+                show: false
+            }
+        },
+        series: [{
+            name: '总亩数',
+            type: 'bar',
+            stack: '总量',
+            color:'#0035f9',
+            barWidth : 20,
+            label: {
+                normal: {
+                    show: false,
+                    position: 'insideRight'
+                }
+            },
+            data: [6728.389999999999, 0.0, 0.0, 0.0, 515.4200000000001, 0.0, 0.0, 0.0]
+        }, {
+            name: '总时长',
+            type: 'bar',
+            stack: '总量',
+            color:'#f36f8a',
+            barWidth : 20,
+            label: {
+                normal: {
+                    show: false,
+                    position: 'insideRight'
+                }
+            },
+            data: [13155.0, 0.0, 0.0, 0.0, 139410.25, 0.0, 0.0, 0.0]
+        }, {
+            name: '总里程',
+            type: 'bar',
+            stack: '总量',
+            color:'#efe39b',
+            barWidth : 20,
+            label: {
+                normal: {
+                    show: false,
+                    position: 'insideRight'
+                }
+            },
+            data: [1794.249, 0.0, 0.0, 0.0, 0.0, 0.0, 482.625, 0.0]
+        }
+        {#    {#}
+        {#    name: '离线',#}
+        {#    type: 'bar',#}
+        {#    stack: '总量',#}
+        {#    color:'#25f3e6',#}
+        {#    barWidth : 20,#}
+        {#    label: {#}
+        {#        normal: {#}
+        {#            show: false,#}
+        {#            position: 'insideRight'#}
+        {#        }#}
+        {#    },#}
+        {#    data: [4, 10, 8, 7]#}
+
+        ]
+
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+    window.addEventListener("resize",function(){
+        myChart.resize();
+    });
+
+
+</script>
+
+</html>

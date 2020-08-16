@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>政府监管</title>
+    <link href="static/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/common.css">
+
+
+    <!--[if lt IE 9]>
+    <script src="static/js/html5shiv.min.js"></script>
+    <script src="static/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<!--header开始-->
+<div class="header">
+    <div class="header_logo fl">
+        <a href="#"><img src="static/img/header_logo.png" alt=""></a>
+    </div>
+    <div class="header_nav fl">
+        <ul>
+            <li>
+                <img src="static/img/nav_1.png" alt="">
+                <a href="index" class="nav_current">数据概览</a>
+            </li>
+{#            <li>#}
+{#                <img src="static/img/nav_2.png" alt="">#}
+{#                <a href="#">车辆监控</a>#}
+{#            </li>#}
+{#            <li>#}
+{#                <img src="static/img/nav_3.png" alt="">#}
+{#                <a href="#">政府监管</a>#}
+{#            </li>#}
+{#            <li>#}
+{#                <img src="static/img/nav_4.png" alt="">#}
+{#                <a href="#">参数设置</a>#}
+{#            </li>#}
+{#            <li>#}
+{#                <img src="static/img/nav_5.png" alt="">#}
+{#                <a href="#">车载视频</a>#}
+{#            </li>#}
+            <li>
+                <img src="static/img/nav_6.png" alt="">
+                <a href="t4">历史轨迹</a>
+            </li>
+            <li>
+                <img src="static/img/nav_7.png" alt="">
+                <a href="t1">查询统计</a>
+            </li>
+            <!--<li>-->
+                <!--<img src="static/img/nav_8.png" alt="">-->
+                <!--<a href="#">行业应用</a>-->
+            <!--</li>-->
+{#            <li>#}
+{#                <img src="static/img/nav_9.png" alt="">#}
+{#                <a href="#">系统设置</a>#}
+{#            </li>#}
+        </ul>
+    </div>
+{#    <div class="header_myself fr">#}
+{#        <p>用户：管理员</p>#}
+{#        <a href="#" data-toggle="modal" data-target=".bs-example-modal-sm">注销 &nbsp;<span class="caret"></span></a>#}
+{#    </div>#}
+</div>
+<!--header结束-->
+
+<!--content开始-->
+<div class="content">
+    <div class="content_title">
+        <img src="static/img/content_title.png" alt="" class="fl">
+        <p>政府监管&gt;车辆信息查询</p>
+    </div>
+    <div class="content_main">
+        <div class="form-inline content_search">
+            <div class="form-group">
+                <!-----黄嘉华改动啦------------------------------------------------------------------------>
+                <label >企业名称：</label>
+                <select class="form-control" id="hjh_selected_company">
+                    <option>所有</option>
+                    <option>中国一拖集团有限公司</option>
+                    <option>五征集团</option>
+                    <option>中联重科汉寿工业园</option>
+                    <option>雷沃重工股份有限公司</option>
+                    <option>江苏沃得农业机械有限公司</option>
+                    <option>山东金大丰机械有限公司</option>
+                    <option>洛阳辰汉农业装备科技有限公司</option>
+                    <option>山东巨明机械有限公司</option>
+                    <option>潍柴动力股份有限公司</option>
+                    <option>五征测试</option>
+                    <option>勇猛机械股份有限公司</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label >车辆类型：</label>
+                <select class="form-control" id="hjh_selected_vehicle">
+                    <option>所有</option>
+                    <option>拖拉机</option>
+                    <option>TS804A</option>
+                    <option>抛秧机</option>
+                    <option>GF80(4LZ-8</option>
+                    <option>甘蔗机</option>
+                    <option>玉米机</option>
+                    <option>4HZJ-2500</option>
+                    <option>潍柴动力测试</option>
+                    <option>勇猛玉米机车型</option>
+                    <option>5AQ1</option>
+                </select>
+            </div>
+            <button id='hjh_query_btn' onclick="hjh_click_query()" type="button" class="btn btn-primary">查询</button>
+        </div>
+        <div class="content_table">
+            <!--动态生成表格---------------------------------------------------------->
+        <div id="hjh_table_work_data" >
+
+        </div>
+
+
+
+</div>
+<!--content结束-->
+
+
+
+
+<!--注销模态框  开始-->
+<div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">注销</h4>
+            </div>
+            <div class="modal-body">
+                <p>确认退出该系统吗？</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--注销模态框  结束-->
+
+
+<!--添加模态框  开始-->
+<div class="modal fade" id="modal_add" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document" style="width: 700px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">添加</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">车牌号</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control"  placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">颜色</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control"  placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">来源</label>
+                        <div class="col-sm-10">
+                            <select class="form-control">
+                                <option>请选择</option>
+                                <option>车载终端</option>
+                                <option>其他</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">企业名称</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control"  placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">报警类型</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control"  placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">视频终端</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control"  placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">车辆总数</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control"  placeholder="">
+                        </div>
+                    </div>
+                    <div/>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--添加模态框  结束-->
+
+
+
+</body>
+<script src="static/js/jquery-1.11.1.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="static/js/common.js"></script>
+
+
+
+<style type="text/css">
+      /*奇数改变的颜色*/
+      tr:nth-child(odd){background-color:#ffffff}
+      /*偶数改变的颜色*/
+      tr:nth-child(even){background-color:#e1edf7;}
+      /*table样式*/
+</style>
+
+<script>
+    //原始数据 原始数据的值为none时，运行出错，故认为将none替换成''。
+    let work_data=[
+    {'did': '862237044025356', 'vin': '41922115', 'Lpn': 'wu', 'GroupName': '中国一拖集团有限公司', 'vehicleModelName': '拖拉机', 'vehicleTypeCode': ''},
+    {'did': '862237044116825', 'vin': '31900264', 'Lpn': 'wu', 'GroupName': '中国一拖集团有限公司', 'vehicleModelName': '拖拉机', 'vehicleTypeCode': ''},
+    {'did': '862237044130453', 'vin': '41914837', 'Lpn': 'wu', 'GroupName': '中国一拖集团有限公司', 'vehicleModelName': '拖拉机', 'vehicleTypeCode': ''},
+    {'did': 'BDT1101912100010', 'vin': 'H3621TTS1L35A4574', 'Lpn': 'wu', 'GroupName': '五征集团', 'vehicleModelName': 'TS804A', 'vehicleTypeCode': '254'},
+    {'did': 'BDT1101912100056', 'vin': 'BDT1101912100056', 'Lpn': 'BDT1101912100056', 'GroupName': '中联重科汉寿工业园', 'vehicleModelName': '抛秧机', 'vehicleTypeCode': '254'},
+    {'did': 'LOV2262501201980', 'vin': 'GL7HZ100000102149', 'Lpn': '', 'GroupName': '雷沃重工股份有限公司', 'vehicleModelName': 'GF80(4LZ-8', 'vehicleTypeCode': ''},
+    {'did': 'LOV2262631101824', 'vin': 'GL7HZ100000102162', 'Lpn': '', 'GroupName': '雷沃重工股份有限公司', 'vehicleModelName': 'GF80(4LZ-8', 'vehicleTypeCode': ''},
+    {'did': 'LOV2263292102508', 'vin': 'GL7HZ100000102227', 'Lpn': '', 'GroupName': '雷沃重工股份有限公司', 'vehicleModelName': 'GF80(4LZ-8', 'vehicleTypeCode': ''},
+    {'did': 'NJHYKVOAT0000340', 'vin': 'NJHYKVOAT0000340', 'Lpn': 'NJHYKVOAT0000340', 'GroupName': '江苏沃得农业机械有限公司', 'vehicleModelName': '甘蔗机', 'vehicleTypeCode': '38'},
+    {'did': 'NJHYKVOAT0000352', 'vin': 'NJHYKVOAT0000352', 'Lpn': 'NJHYKVOAT0000352', 'GroupName': '江苏沃得农业机械有限公司', 'vehicleModelName': '甘蔗机', 'vehicleTypeCode': '38'},
+    {'did': 'NJHYKVOAT0000372', 'vin': 'NJHYKVOAT0000372', 'Lpn': 'NJHYKVOAT0000372', 'GroupName': '江苏沃得农业机械有限公司', 'vehicleModelName': '甘蔗机', 'vehicleTypeCode': '38'},
+    {'did': 'NJHYKVOAT0000395', 'vin': 'NJHYKVOAT0000395', 'Lpn': 'NJHYKVOAT0000395', 'GroupName': '江苏沃得农业机械有限公司', 'vehicleModelName': '甘蔗机', 'vehicleTypeCode': '38'},
+    {'did': 'NJHYKVOAT0000400', 'vin': 'NJHYKVOAT0000400', 'Lpn': 'NJHYKVOAT0000400', 'GroupName': '江苏沃得农业机械有限公司', 'vehicleModelName': '甘蔗机', 'vehicleTypeCode': '38'},
+    {'did': 'NJHYNBSAT0000165', 'vin': 'YMJAF278911', 'Lpn': 'y00085', 'GroupName': '江苏沃得农业机械有限公司', 'vehicleModelName': '玉米机', 'vehicleTypeCode': '38'},
+    {'did': 'NJHYNBSAT0000203', 'vin': 'YMJAF278934', 'Lpn': 'y00003', 'GroupName': '江苏沃得农业机械有限公司', 'vehicleModelName': '玉米机', 'vehicleTypeCode': '38'},
+    {'did': 'NJHYNBSAT0000207', 'vin': 'YMJAF278915', 'Lpn': 'y00038', 'GroupName': '江苏沃得农业机械有限公司', 'vehicleModelName': '玉米机', 'vehicleTypeCode': '38'},
+    {'did': 'NJHYNBSAT0000209', 'vin': 'YMJAF278902', 'Lpn': 'y00031', 'GroupName': '江苏沃得农业机械有限公司', 'vehicleModelName': '玉米机', 'vehicleTypeCode': '38'},
+    {'did': 'NJHYNBSAT0000253', 'vin': 'YMJAF278960', 'Lpn': 'y00058', 'GroupName': '江苏沃得农业机械有限公司', 'vehicleModelName': '玉米机', 'vehicleTypeCode': '38'},
+    {'did': 'NJHYNBSAT0000279', 'vin': 'YMJAF278969', 'Lpn': 'y00028', 'GroupName': '江苏沃得农业机械有限公司', 'vehicleModelName': '玉米机', 'vehicleTypeCode': '38'},
+    {'did': 'NJHYNBSAT0000312', 'vin': 'YMJAF278951', 'Lpn': 'y00049', 'GroupName': '江苏沃得农业机械有限公司', 'vehicleModelName': '玉米机', 'vehicleTypeCode': '38'},
+    {'did': 'NJHYNBSAT0000324', 'vin': 'YMJAF278946', 'Lpn': 'y00020', 'GroupName': '江苏沃得农业机械有限公司', 'vehicleModelName': '玉米机', 'vehicleTypeCode': '38'},
+    {'did': 'NJHYNBSAT0000444', 'vin': 'YMJAF278937', 'Lpn': 'y00006', 'GroupName': '江苏沃得农业机械有限公司', 'vehicleModelName': '玉米机', 'vehicleTypeCode': '38'},
+    {'did': 'NJHYOPWAS0000055', 'vin': 'NJHYOPWAS0000055', 'Lpn': '', 'GroupName': '山东金大丰机械有限公司', 'vehicleModelName': '4HZJ-2500', 'vehicleTypeCode': '38'},
+    {'did': 'NJHYOPWAS0000213', 'vin': '待定19', 'Lpn': 'y000108', 'GroupName': '江苏沃得农业机械有限公司', 'vehicleModelName': '玉米机', 'vehicleTypeCode': '18'},
+    {'did': 'NJHYOPWAT0000110', 'vin': 'NJHYOPWAT0000110', 'Lpn': '', 'GroupName': '洛阳辰汉农业装备科技有限公司', 'vehicleModelName': '甘蔗机', 'vehicleTypeCode': '47'},
+    {'did': 'NJHYOPWAT0000178', 'vin': 'NJHYOPWAT0000178', 'Lpn': '', 'GroupName': '洛阳辰汉农业装备科技有限公司', 'vehicleModelName': '甘蔗机', 'vehicleTypeCode': '47'},
+    {'did': 'NJHYOPWAT0000292', 'vin': 'NJHYOPWAT0000292', 'Lpn': '', 'GroupName': '洛阳辰汉农业装备科技有限公司', 'vehicleModelName': '甘蔗机', 'vehicleTypeCode': '38'},
+    {'did': 'NJHYOPWAT0000294', 'vin': 'NJHYOPWAT0000294', 'Lpn': '', 'GroupName': '洛阳辰汉农业装备科技有限公司', 'vehicleModelName': '甘蔗机', 'vehicleTypeCode': '47'},
+    {'did': 'NJHYOPWAT0000295', 'vin': 'NJHYOPWAT0000295', 'Lpn': '', 'GroupName': '洛阳辰汉农业装备科技有限公司', 'vehicleModelName': '甘蔗机', 'vehicleTypeCode': '47'},
+    {'did': 'NJHYOPWAT0000301', 'vin': 'NJHYOPWAT0000301', 'Lpn': '', 'GroupName': '洛阳辰汉农业装备科技有限公司', 'vehicleModelName': '甘蔗机', 'vehicleTypeCode': '47'},
+    {'did': 'NJHYOPWAT0000304', 'vin': 'NJHYOPWAT0000304', 'Lpn': '', 'GroupName': '洛阳辰汉农业装备科技有限公司', 'vehicleModelName': '甘蔗机', 'vehicleTypeCode': '47'},
+    {'did': 'NJHYOPWAT0000314', 'vin': 'NJHYOPWAT0000314', 'Lpn': 'NJHYOPWAT0000314', 'GroupName': '洛阳辰汉农业装备科技有限公司', 'vehicleModelName': '甘蔗机', 'vehicleTypeCode': '18'},
+    {'did': 'NJHYOPWAT0000317', 'vin': 'NJHYOPWAT0000317', 'Lpn': '', 'GroupName': '洛阳辰汉农业装备科技有限公司', 'vehicleModelName': '甘蔗机', 'vehicleTypeCode': '47'},
+    {'did': 'NJHYOPWAT0000322', 'vin': 'NJHYOPWAT0000322', 'Lpn': '', 'GroupName': '洛阳辰汉农业装备科技有限公司', 'vehicleModelName': '甘蔗机', 'vehicleTypeCode': '47'},
+    {'did': 'NJHYOPWAT0000323', 'vin': 'NJHYOPWAT0000323', 'Lpn': '', 'GroupName': '洛阳辰汉农业装备科技有限公司', 'vehicleModelName': '甘蔗机', 'vehicleTypeCode': '47'},
+    {'did': 'NJHYOPWAT0000338', 'vin': 'NJHYOPWAT0000338', 'Lpn': '', 'GroupName': '洛阳辰汉农业装备科技有限公司', 'vehicleModelName': '甘蔗机', 'vehicleTypeCode': '47'},
+    {'did': 'NJHYOPWAT0000340', 'vin': 'NJHYOPWAT0000340', 'Lpn': '', 'GroupName': '洛阳辰汉农业装备科技有限公司', 'vehicleModelName': '甘蔗机', 'vehicleTypeCode': '47'},
+    {'did': 'NJHYOPWAT0000363', 'vin': 'NJHYOPWAT0000363', 'Lpn': '', 'GroupName': '洛阳辰汉农业装备科技有限公司', 'vehicleModelName': '甘蔗机', 'vehicleTypeCode': '47'},
+    {'did': 'NJHYTFQAT0000051', 'vin': 'NJHYTFQAT0000051', 'Lpn': '81', 'GroupName': '山东巨明机械有限公司', 'vehicleModelName': '玉米机', 'vehicleTypeCode': '玉米机'},
+    {'did': 'NJHYTFQAT0000153', 'vin': 'NJHYTFQAT0000153', 'Lpn': 'NJ153', 'GroupName': '山东巨明机械有限公司', 'vehicleModelName': '玉米机', 'vehicleTypeCode': '10'},
+    {'did': 'TEST201709150008', 'vin': 'TEST201709150008', 'Lpn': '1804', 'GroupName': '五征集团', 'vehicleModelName': '拖拉机', 'vehicleTypeCode': '五征拖拉机'},
+    {'did': 'WCHT201805C00008', 'vin': 'WCHT201805C00008', 'Lpn': 'WCHT201805C00008', 'GroupName': '潍柴动力股份有限公司', 'vehicleModelName': '潍柴动力测试', 'vehicleTypeCode': '19'},
+    {'did': 'WCHT201805C00010', 'vin': 'WCHT201805C00010', 'Lpn': 'WCHT201805C00010', 'GroupName': '潍柴动力股份有限公司', 'vehicleModelName': '潍柴动力测试', 'vehicleTypeCode': '19'},
+    {'did': 'WUZH201901C00001', 'vin': 'WUZH201901C00001', 'Lpn': 'MG2104玉柴国四', 'GroupName': '五征测试', 'vehicleModelName': '拖拉机', 'vehicleTypeCode': '五征拖拉机'},
+    {'did': 'WUZH201901C00004', 'vin': 'WUZH201901C00004', 'Lpn': 'MD904-湖北', 'GroupName': '五征测试', 'vehicleModelName': '拖拉机', 'vehicleTypeCode': '五征拖拉机'},
+    {'did': 'WUZH201901C00006', 'vin': 'WUZH201901C00006', 'Lpn': 'MD904(国三湿式PTO)', 'GroupName': '五征测试', 'vehicleModelName': '拖拉机', 'vehicleTypeCode': '19'},
+    {'did': 'WUZH201901C00007', 'vin': 'WUZH201901C00007', 'Lpn': 'ME1804（测试-河北市场）', 'GroupName': '五征测试', 'vehicleModelName': '拖拉机', 'vehicleTypeCode': '19'},
+    {'did': 'WUZH201901C00008', 'vin': 'WUZH201901C00008', 'Lpn': 'MD904(潍柴国四)', 'GroupName': '五征测试', 'vehicleModelName': '拖拉机', 'vehicleTypeCode': '五征拖拉机'},
+    {'did': 'YMJ4121905100062', 'vin': 'K83210252K3000823', 'Lpn': 'K83210252K3000823', 'GroupName': '勇猛机械股份有限公司', 'vehicleModelName': '勇猛玉米机车型', 'vehicleTypeCode': '2'},
+    {'did': 'YMJ4121905100142', 'vin': 'K83210278K3002335', 'Lpn': '100142', 'GroupName': '勇猛机械股份有限公司', 'vehicleModelName': '5AQ1', 'vehicleTypeCode': '2'}
+    ];
+
+
+ // 创建表格的函数
+ function buildTable(data) {
+  let table = document.createElement("table");
+  let tr = document.createElement("tr");
+  // 通过 for in 循环遍历对象,得到对象的属性,为表头添加内容
+  let th0=document.createElement('th');
+  th0.innerText='序号';
+  tr.appendChild(th0);
+  let th1=document.createElement('th');
+  th1.innerText='设备号';
+  tr.appendChild(th1);
+  let th2=document.createElement('th');
+  th2.innerText='车架号';
+  tr.appendChild(th2);
+  let th3=document.createElement('th');
+  th3.innerText='车牌号';
+  tr.appendChild(th3);
+    let th4=document.createElement('th');
+  th4.innerText='企业名称';
+  tr.appendChild(th4);
+    let th5=document.createElement('th');
+  th5.innerText='车辆类型';
+  tr.appendChild(th5);
+  let th6=document.createElement('th');
+  th6.innerText='车型代码';
+  tr.appendChild(th6);
+
+  tr.setAttribute('height','35px');
+  tr.setAttribute('font-size','36px');
+  table.appendChild(tr);
+  // 通过 forEach 循环遍历对象数组,为表格添加行
+     let rows=0;
+  data.forEach((value, index) => {
+   let tr = document.createElement("tr");
+   // 通过 for in 循环遍历对象,得到对象的属性,给每行添加内容
+   let td1 = document.createElement("td");
+   rows=rows+1;
+   td1.innerText=rows;
+   tr.appendChild(td1);
+   for (let index1 in data[index]) {
+        let td=document.createElement('td');
+        td.innerText = data[index][index1];
+        tr.appendChild(td);
+   }
+   tr.setAttribute('height','25px');
+   table.appendChild(tr);
+  });
+  //设置表格的对齐属性,和边框属性
+  //table.setAttribute("text-align", "center");
+  table.setAttribute("border","2");
+  table.setAttribute('margin','auto');
+  table.setAttribute('height','10px');
+
+  th0.setAttribute('width','50px');
+  th1.setAttribute('width','200px');
+  th2.setAttribute('width','200px');
+  th3.setAttribute('width','200px');
+  th4.setAttribute('width','250px');
+  th5.setAttribute('width','140px');
+  th6.setAttribute('width','140px');
+
+  return table;
+ }
+
+ //document.querySelector("div").appendChild(buildTable(MOUNTAINS));
+
+</script>
+
+
+<script>
+
+    //初始化默认显示所有数据
+    $(function () {
+        document.getElementById('hjh_table_work_data').appendChild(buildTable(work_data));
+    })
+
+    //查询按钮点击函数
+    function hjh_click_query() {
+        let selected_company=document.getElementById('hjh_selected_company').value;
+        let selected_vehicle=document.getElementById('hjh_selected_vehicle').value;
+        res_query=[]  //查询结果不可能为空
+        if (selected_company=='所有' && selected_vehicle=='所有'){
+            document.getElementById('hjh_table_work_data').innerHTML='';
+            document.getElementById('hjh_table_work_data').appendChild(buildTable(work_data));
+            //alert('all')
+        }
+        else if(selected_company=='所有' && selected_vehicle !='所有'){
+            for(var i=0; i<work_data.length;i++) {
+                if (work_data[i]['vehicleModelName'] == selected_vehicle) {
+                    res_query.push(work_data[i]);
+                }
+            }
+           // alert('222');
+            document.getElementById('hjh_table_work_data').innerHTML='';
+            document.getElementById('hjh_table_work_data').appendChild(buildTable(res_query));
+
+
+        }
+        else if(selected_company!='所有' && selected_vehicle=='所有'){
+            for(var j=0;j<work_data.length;j++){
+                if(work_data[j]['GroupName'] == selected_company){
+                    res_query.push(work_data[j]);
+                }
+            }
+            //alert('333');
+            document.getElementById('hjh_table_work_data').innerHTML='';
+            document.getElementById('hjh_table_work_data').appendChild(buildTable(res_query));
+        }
+        else if(selected_company!='所有'&& selected_vehicle!='所有'){
+            for(var k=0;k<work_data.length;k++){
+                if(work_data[k]['GroupName']==selected_company && work_data[k]['vehicleModelName'] == selected_vehicle){
+                    res_query.push(work_data[k]);
+                }
+            }
+            //双选情况下，不一定完全匹配，可能检索为空
+            if(res_query.length==0){
+                alert('查询结果为空！');
+                document.getElementById('hjh_table_work_data').innerHTML='';
+            }
+            else{
+                document.getElementById('hjh_table_work_data').innerHTML='';
+                document.getElementById('hjh_table_work_data').appendChild(buildTable(res_query));
+            }
+
+        }
+
+    }
+
+
+</script>
+
+
+
+</html>
