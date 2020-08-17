@@ -256,11 +256,11 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for i in range(len(totalmiles)) %}
+                    {% for i in range(1,6) %}
                     <tr>
                         <td>{{ i }}</td>
-                        <td>{{ item[i]['did'] }}</td>
-                        <td>{{ item[i]['mileage'] }}</td>
+                        <td>{{ totalmiles[i-1]['did'] }}</td>
+                        <td>{{ totalmiles[i-1]['mileage'] }}</td>
                     </tr>
                     {% endfor %}
                     </tbody>
@@ -283,11 +283,11 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {% for i in range(len(totaltime)) %}
+                        {% for i in range(1,6) %}
                         <tr>
                             <td>{{ i }}</td>
-                            <td>{{ item[i]['did'] }}</td>
-                            <td>{{ item[i]['jobTime'] }}</td>
+                            <td>{{ totaltime[i-1]['did'] }}</td>
+                            <td>{{ totaltime[i-1]['jobTime'] }}</td>
                         </tr>
                         {% endfor %}
                         </tbody>
@@ -335,7 +335,7 @@
                         <th>累计油耗(L)</th>
                     </tr>
                     </thead>
-                    <thead>
+                    <tbody>
                     {% for i in range(1,6) %}
                     <tr>
                         <td>{{ i }}</td>
